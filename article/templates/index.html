@@ -35,6 +35,26 @@
             {% endfor %}
         </tbody>
     </table>
+    <div style="margin-top: 20px; text-align: center;">
+        {% if articles.has_previous %}
+            <a href="?page=1" style="margin-right: 8px;">&laquo; 처음</a>
+            <a href="?page={{ articles.previous_page_number }}" style="margin-right: 8px;">이전</a>
+        {% else %}
+            <span style="color: gray; margin-right: 8px;">&laquo; 처음</span>
+            <span style="color: gray; margin-right: 8px;">이전</span>
+        {% endif %}
 
+        <span style="padding: 4px 8px; background-color: #e0f0ff; border-radius: 4px; margin: 0 8px;">
+            {{ articles.number }} / {{ articles.paginator.num_pages }} 페이지
+        </span>
+
+        {% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}" style="margin-left: 8px;">다음</a>
+            <a href="?page={{ articles.paginator.num_pages }}" style="margin-left: 8px;">마지막 &raquo;</a>
+        {% else %}
+            <span style="color: gray; margin-left: 8px;">다음</span>
+            <span style="color: gray; margin-left: 8px;">마지막 &raquo;</span>
+        {% endif %}
+    </div>
 </body>
 </html>
