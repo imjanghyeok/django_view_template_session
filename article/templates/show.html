@@ -24,6 +24,20 @@
         <h2> 댓글 </h2>
 
         <div>
+            <h3> 댓글 추가하기 </h3>
+
+            <form action="{% url 'article:create_comment' article.id %}" method="POST">
+                {% csrf_token %}
+                <label>
+                    내용:
+                    <textarea name="content"></textarea>
+
+                    <input type="submit" value="댓글 작성">
+                </label>
+            </form>
+        </div>
+
+        <div>
             {% for comment in comments %}
                 <div>
                     {{ comment.author.username }} : {{ comment.content }}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from article.models import Article
+from article.models import Article, Comment
 
 
 def index(request):
@@ -47,3 +47,13 @@ def delete(request, pk):
     article = Article.objects.get(pk=pk)
     article.delete()
     return redirect('article:index')
+
+
+def create_comment(request, article_id):
+    article = Article.objects.get(pk=article_id)
+    content = request.POST['content']
+
+    comment = Comment(author=request.user, article=article, content=content)
+    comment.save()
+
+    return redirect('article:show', pk=article_id)
