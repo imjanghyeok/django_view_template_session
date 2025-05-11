@@ -8,7 +8,7 @@
     <div>
         <h3> 작성자: {{ article.author.username }}</h3>
         <div>
-            <a href="{% url 'article:edit' article.id %}"> 글 수정하기</a>
+            <a href="{% url 'article:update' article.id %}"> 글 수정하기</a>
             <a href="{% url 'article:delete' article.id %}"> 글 삭제하기</a>
         </div>
 
