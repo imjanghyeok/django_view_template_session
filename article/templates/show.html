@@ -17,4 +17,19 @@
             {{ article.content }}
         </p>
     </div>
+    
+    <hr>
+
+    <div>
+        <h2> 댓글 </h2>
+
+        <div>
+            {% for comment in comments %}
+                <div>
+                    {{ comment.author.username }} : {{ comment.content }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
+

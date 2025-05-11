@@ -11,9 +11,9 @@ def index(request):
 
 def show(request, pk):
     article = Article.objects.get(pk=pk)
+    comments = article.comments.all()
 
-    return render(request, 'show.html', { 'article': article })
-
+    return render(request, 'show.html', { 'article': article, 'comments': comments })
 
 def new(request):
     return render(request, 'new.html')
